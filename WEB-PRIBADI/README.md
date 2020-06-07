@@ -3,5 +3,5 @@
 * [GitHub Pages](https://kolokopo.github.io/os201/WEB-PRIBADI)
 
 <br>
-<img src="os201.png"  width="950">
+<img src="3n7qa8g28j031.jpg">
 <br>

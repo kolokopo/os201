@@ -1,0 +1,172 @@
+Script started on 2020-06-08 22:36:53+0700
+]0;kolokopo@DESKTOP-RFHDPLK: /mnt/d/2020/os/kolokopo/os201/UAS[01;32mkolokopo@DESKTOP-RFHDPLK[00m:[01;34m/mnt/d/2020/os/kolokopo/os201/UAS[00m$ PS1="$ "
+$ echo $GitHubUser
+kolokopo
+$ echo $PSTAMP
+TMP1="$(date +%y%m%d-%H%M%S)"; TMP2="$(echo $TMP1-$GitHubUser-${PWD##*/}|sha1sum|cut -c1-4)"; echo "$TMP1-$TMP2-${PWD##*/}/> ";
+$ eval $PSTAMP
+200608-223701-3fc7-UAS/> 
+$ PS1="\$(eval \$PSTAMP)"
+200608-223702-bebc-UAS/> export CheckUser="kolokopo";
+200608-223719-0bda-UAS/> 
+200608-223719-0bda-UAS/> startend=$(grep -o "[0-9].*[a-z].*[0-9] [0-9][0-9]:[0-9][0-9]:[0-9][0-9] [A-Z]M" --  0001-mytest.txt)
+200608-223719-0bda-UAS/> 
+200608-223720-5e52-UAS/> readarray -t se <<<"$startend"
+200608-223720-5e52-UAS/> 
+200608-223720-5e52-UAS/> start=$(date -d "${se[0]}" "+%y%m%d-%H%M%S")
+200608-223720-5e52-UAS/> stop=$(date -d "${se[1]}" "+%y%m%d-%H%M%S")
+200608-223720-5e52-UAS/> 
+200608-223720-5e52-UAS/> sequence="SEQOK"
+200608-223720-5e52-UAS/> 
+200608-223720-5e52-UAS/> tstamp=($(grep -o "[0-9][0-9][0-9][0-9][0-9][0-9][-][0-9][0-9][0-9][0-9][0-9][0-9]"  -- 0001-mytest.txt))
+200608-223720-5e52-UAS/> 
+200608-223720-5e52-UAS/> iterator=$start
+200608-223720-5e52-UAS/> 
+200608-223720-5e52-UAS/> for ts in ${tstamp[@]}
+> do
+>     bool=$([[ $iterator > $ts ]]; echo $?)
+>     if [[ $bool = 0 ]]
+>         then sequence="SEQNO"
+>         break
+>     fi
+>     iterator=$ts
+> done
+200608-223720-5e52-UAS/> 
+200608-223720-5e52-UAS/> bool=$([[ $iterator > $stop ]]; echo $?)
+200608-223720-5e52-UAS/> if [[ $bool = 0 ]]; then sequence="SEQNO"; fi
+200608-223720-5e52-UAS/> 
+200608-223720-5e52-UAS/> sha1sum="SUMOK"
+200608-223720-5e52-UAS/> 
+200608-223720-5e52-UAS/> sha1sum 0000-mypub.txt 0001-mytest.txt 0002-mytest.txt.asc > SHA1SUM
+200608-223720-5e52-UAS/> sha1sum -c SHA1SUM
+0000-mypub.txt: OK
+0001-mytest.txt: OK
+0002-mytest.txt.asc: OK
+200608-223720-5e52-UAS/> 
+200608-223720-5e52-UAS/> created=$(sed -n '2p' SHA1SUM | cut -c 1-8)
+200608-223720-5e52-UAS/> origin=$(sed -n '2p' SHA1SUM-ORI | cut -c 1-8)
+200608-223721-9d01-UAS/> 
+200608-223721-9d01-UAS/> if [ "$created" != "$origin" ]; then sha1sum="SUMNO"; fi
+200608-223721-9d01-UAS/> 
+200608-223721-9d01-UAS/> eval $PSTAMP
+200608-223721-9d01-UAS/> 
+200608-223721-9d01-UAS/> 
+200608-223721-9d01-UAS/> echo "$GitHubUser ZCZCSCRIPTSTART $start $CheckUser\n" >> temp0
+200608-223721-9d01-UAS/> echo "$GitHubUser $CheckUser "$TMP1-$TMP2-${PWD##*/}/" $start $sequence $sha1sum $orrigin\n" >> temp0
+200608-223721-9d01-UAS/> echo "$GitHubUser ZCZCSCRIPTSTOP $stop $sequence" >> temp0
+200608-223721-9d01-UAS/> 
+200608-223721-9d01-UAS/> CEKSAYA=$(cat temp0)
+200608-223721-9d01-UAS/> export CheckUser="krisnadwitama";
+200608-223728-a0f9-UAS/> 
+200608-223728-a0f9-UAS/> startend=$(grep -o "[0-9].*[a-z].*[0-9] [0-9][0-9]:[0-9][0-9]:[0-9][0-9] [A-Z]M" --  0001-test0.txt)
+200608-223728-a0f9-UAS/> 
+200608-223729-28f7-UAS/> readarray -t se <<<"$startend"
+200608-223729-28f7-UAS/> 
+200608-223729-28f7-UAS/> start=$(date -d "${se[0]}" "+%y%m%d-%H%M%S")
+200608-223729-28f7-UAS/> stop=$(date -d "${se[1]}" "+%y%m%d-%H%M%S")
+200608-223729-28f7-UAS/> 
+200608-223729-28f7-UAS/> sequence="SEQOK"
+200608-223729-28f7-UAS/> 
+200608-223729-28f7-UAS/> tstamp=($(grep -o "[0-9][0-9][0-9][0-9][0-9][0-9][-][0-9][0-9][0-9][0-9][0-9][0-9]"  -- 0001-test0.txt))
+200608-223729-28f7-UAS/> 
+200608-223729-28f7-UAS/> iterator=$start
+200608-223729-28f7-UAS/> 
+200608-223729-28f7-UAS/> for ts in ${tstamp[@]}
+> do
+>     bool=$([[ $iterator > $ts ]]; echo $?)
+>     if [[ $bool = 0 ]]
+>         then sequence="SEQNO"
+>         break
+>     fi
+>     iterator=$ts
+> done
+200608-223729-28f7-UAS/> 
+200608-223729-28f7-UAS/> bool=$([[ $iterator > $stop ]]; echo $?)
+200608-223729-28f7-UAS/> if [[ $bool = 0 ]]; then sequence="SEQNO"; fi
+200608-223729-28f7-UAS/> 
+200608-223729-28f7-UAS/> sha1sum="SUMOK"
+200608-223729-28f7-UAS/> 
+200608-223729-28f7-UAS/> sha1sum 0000-pub0.txt 0001-test0.txt 0002-test0.txt.asc > SHA1SUM-0
+200608-223729-28f7-UAS/> sha1sum -c SHA1SUM-0
+0000-pub0.txt: OK
+0001-test0.txt: OK
+0002-test0.txt.asc: OK
+200608-223729-28f7-UAS/> 
+200608-223729-28f7-UAS/> created=$(sed -n '2p' SHA1SUM-0 | cut -c 1-8)
+200608-223730-dd3e-UAS/> origin=$(sed -n '2p' SHA1SUM-0-ORI | cut -c 1-8)
+200608-223730-dd3e-UAS/> 
+200608-223730-dd3e-UAS/> if [ "$created" != "$origin" ]; then sha1sum="SUMNO"; fi
+200608-223730-dd3e-UAS/> 
+200608-223730-dd3e-UAS/> eval $PSTAMP
+200608-223730-dd3e-UAS/> 
+200608-223730-dd3e-UAS/> 
+200608-223730-dd3e-UAS/> echo "$GitHubUser ZCZCSCRIPTSTART $start $CheckUser\n" >> temp1
+200608-223730-dd3e-UAS/> echo "$GitHubUser $CheckUser "$TMP1-$TMP2-${PWD##*/}/" $start $sequence $sha1sum $orrigin\n" >> temp1
+200608-223730-dd3e-UAS/> echo "$GitHubUser ZCZCSCRIPTSTOP $stop $sequence" >> temp1
+200608-223730-dd3e-UAS/> 
+200608-223730-dd3e-UAS/> CEKSEBELA1=$(cat temp1)
+200608-223730-dd3e-UAS/> export CheckUser="kurilham19";
+200608-223737-2e86-UAS/> 
+200608-223737-2e86-UAS/> startend=$(grep -o "[0-9].*[a-z].*[0-9] [0-9][0-9]:[0-9][0-9]:[0-9][0-9] [A-Z]M" --  0001-test1.txt)
+200608-223737-2e86-UAS/> 
+200608-223737-2e86-UAS/> readarray -t se <<<"$startend"
+200608-223737-2e86-UAS/> 
+200608-223737-2e86-UAS/> start=$(date -d "${se[0]}" "+%y%m%d-%H%M%S")
+200608-223737-2e86-UAS/> stop=$(date -d "${se[1]}" "+%y%m%d-%H%M%S")
+200608-223737-2e86-UAS/> 
+200608-223737-2e86-UAS/> sequence="SEQOK"
+200608-223737-2e86-UAS/> 
+200608-223737-2e86-UAS/> tstamp=($(grep -o "[0-9][0-9][0-9][0-9][0-9][0-9][-][0-9][0-9][0-9][0-9][0-9][0-9]"  -- 0001-test1.txt))
+200608-223737-2e86-UAS/> 
+200608-223737-2e86-UAS/> iterator=$start
+200608-223737-2e86-UAS/> 
+200608-223737-2e86-UAS/> for ts in ${tstamp[@]}
+> do
+>     bool=$([[ $iterator > $ts ]]; echo $?)
+>     if [[ $bool = 0 ]]
+>         then sequence="SEQNO"
+>         break
+>     fi
+>     iterator=$ts
+> done
+200608-223737-2e86-UAS/> 
+200608-223738-6f59-UAS/> bool=$([[ $iterator > $stop ]]; echo $?)
+200608-223738-6f59-UAS/> if [[ $bool = 0 ]]; then sequence="SEQNO"; fi
+200608-223738-6f59-UAS/> 
+200608-223738-6f59-UAS/> sha1sum="SUMOK"
+200608-223738-6f59-UAS/> 
+200608-223738-6f59-UAS/> sha1sum 0000-pub1.txt 0001-test1.txt 0002-test1.txt.asc > SHA1SUM-1
+200608-223738-6f59-UAS/> sha1sum -c SHA1SUM-1
+0000-pub1.txt: OK
+0001-test1.txt: OK
+0002-test1.txt.asc: OK
+200608-223738-6f59-UAS/> 
+200608-223738-6f59-UAS/> created=$(sed -n '2p' SHA1SUM-1 | cut -c 1-8)
+200608-223738-6f59-UAS/> origin=$(sed -n '2p' SHA1SUM-1-ORI | cut -c 1-8)
+200608-223738-6f59-UAS/> 
+200608-223738-6f59-UAS/> if [ "$created" != "$origin" ]; then sha1sum="SUMNO"; fi
+200608-223738-6f59-UAS/> 
+200608-223738-6f59-UAS/> eval $PSTAMP
+200608-223738-6f59-UAS/> 
+200608-223738-6f59-UAS/> 
+200608-223738-6f59-UAS/> echo "$GitHubUser ZCZCSCRIPTSTART $start $CheckUser\n" >> temp2
+200608-223738-6f59-UAS/> echo "$GitHubUser $CheckUser "$TMP1-$TMP2-${PWD##*/}/" $start $sequence $sha1sum $orrigin\n" >> temp2
+200608-223738-6f59-UAS/> echo "$GitHubUser ZCZCSCRIPTSTOP $stop $sequence" >> temp2
+200608-223738-6f59-UAS/> 
+200608-223739-d958-UAS/> CEKSEBELA2=$(cat temp2)
+200608-223739-d958-UAS/> echo -e $CEKSAYA
+kolokopo ZCZCSCRIPTSTART 200607-212401 kolokopo
+ kolokopo kolokopo 200608-223721-9d01-UAS/ 200607-212401 SEQOK SUMOK 4e830364
+ kolokopo ZCZCSCRIPTSTOP 200607-212520 SEQOK
+200608-223745-a4c2-UAS/> echo -e $CEKSEBELA1
+kolokopo ZCZCSCRIPTSTART 200605-215636 krisnadwitama
+ kolokopo krisnadwitama 200608-223730-dd3e-UAS/ 200605-215636 SEQOK SUMNO bf866490
+ kolokopo ZCZCSCRIPTSTOP 200605-215814 SEQOK
+200608-223745-a4c2-UAS/> echo -e $CEKSEBELA2
+kolokopo ZCZCSCRIPTSTART 200607-193421 kurilham19
+ kolokopo kurilham19 200608-223738-6f59-UAS/ 200607-193421 SEQOK SUMNO abc48b8d
+ kolokopo ZCZCSCRIPTSTOP 200607-193827 SEQOK
+200608-223746-7e4d-UAS/> exit
+exit
+
+Script done on 2020-06-08 22:38:05+0700

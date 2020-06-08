@@ -1,7 +1,11 @@
 # Simple page for OS201
 ---
-* [GitHub](https://github.com/kolokopo/os201)
-* [GitHub Page](https://kolokopo.github.io/os201)
+### Halaman apa ini?
+* Persembahan sederhana dari
+* Muhammad Afiful Amin
+* Untuk memenuhi UAS OS
+
+### Info terkait OS
 * [Site Map](URLs/)
 
 <br>
